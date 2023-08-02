@@ -17,6 +17,7 @@ class Stack
 	public:
 		Stack()
 		{
+			//initialise the top pointer to NULL
 			top=NULL;	
 		}
 		void push(int x);	
@@ -25,6 +26,7 @@ class Stack
 };
 int Stack::isempty()
 {
+	//returns 1 for empty stack
 	if(top==NULL)
 	{
 		return 1;
@@ -33,6 +35,7 @@ int Stack::isempty()
 }
 void Stack::push(int x)
 {
+	//returns 1 for full stack
 	Node* p=NULL;
 	p=new Node(x);
 	p->next=top;
@@ -40,11 +43,13 @@ void Stack::push(int x)
 }
 int Stack::pop()
 {
+	//pop function removes the top element and returns it
 	if(top==NULL)
 	{
+		//if stack is empty
 		return -1;
 	}
-	Node* p=NULL;
+	Node* p = NULL;
 	p=top;
 	int x=p->data;
 	top=top->next;
