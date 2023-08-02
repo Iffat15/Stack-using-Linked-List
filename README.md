@@ -1,2 +1,2 @@
-# Stack-using-Linked-List
+# Stack
 Stack using Linked list
