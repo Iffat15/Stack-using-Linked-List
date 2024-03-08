@@ -1,0 +1,55 @@
+#include <iostream>
+#include <stack>
+#include<string>
+#include<bits/stdc++.h>
+using namespace std;
+
+int getpriority(char ch)
+{
+    if (ch == '/' || ch == '*')
+    {
+        return 3;
+    }
+    else if (ch == '+' || ch == '-')
+    {
+        return 2;
+    }
+    return 1;
+}
+
+int main()
+{
+    // Write C++ code here
+    string str;
+    cout << "\nEnter the infix string  : ";
+    getline(cin, str);
+    reverse(str.begin(),str.end());
+    stack<char> stk;
+    string res;
+    int i = 0;
+    while (i < str.length())
+    {
+        if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/')
+        {
+            while (!stk.empty() && getpriority(stk.top()) >= getpriority(str[i]))
+            {
+                res += stk.top();
+                stk.pop();
+            }
+            stk.push(str[i]);
+        }
+        else
+        {
+            res += str[i];
+        }
+        i++;
+    }
+    while (!stk.empty())
+    {
+        res += stk.top();
+        stk.pop();
+    }
+    reverse(res.begin(),res.end());
+    cout << "\nThe prefix expression is : " << res << endl;
+    return 0;
+}
